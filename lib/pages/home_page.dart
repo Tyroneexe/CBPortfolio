@@ -1,5 +1,8 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html';
 import 'package:cobus/themes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,24 +24,47 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 25, left: 50),
-                child: Icon(
-                  Icons.person,
-                  size: 44,
-                  color: primaryClr,
-                ),
-              ),
               Padding(
-                padding: const EdgeInsets.only(top: 25, right: 50),
+                padding: const EdgeInsets.only(top: 25, left: 50),
                 child: GestureDetector(
-                  onTap: () => _launchUrl(),
-                  child: Image.asset(
-                    "images/LinkedIn.png",
+                  onTap: () {
+                    Get.to(() => const HomePage());
+                  },
+                  child: const Icon(
+                    Icons.person,
+                    size: 48,
                     color: primaryClr,
-                    width: 44,
                   ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 35, right: 40),
+                    child: GestureDetector(
+                      onTap: () {
+                        downloadFile("images/CV.pdf");
+                      },
+                      child: const Icon(
+                        Icons.download,
+                        size: 48,
+                        color: primaryClr,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 25, right: 50),
+                    child: GestureDetector(
+                      onTap: () => _launchUrl(),
+                      child: Image.asset(
+                        "images/LinkedIn.png",
+                        color: primaryClr,
+                        width: 44,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -51,10 +77,18 @@ class _HomePageState extends State<HomePage> {
       Uri.parse('https://www.linkedin.com/in/cobus-bothma-335a482a0/');
 
   Future<void> _launchUrl() async {
+    // ignore: deprecated_member_use
     if (await canLaunch(_url.toString())) {
+      // ignore: deprecated_member_use
       await launch(_url.toString());
     } else {
       throw Exception('Could not launch $_url');
     }
+  }
+
+  void downloadFile(url) {
+    AnchorElement anchorElement = AnchorElement(href: url);
+    anchorElement.download = "Cobus Bothma Resume";
+    anchorElement.click();
   }
 }
