@@ -3,7 +3,14 @@ import 'dart:html';
 import 'package:cobus/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+/*
+icons at the top of the screen get bigger when hover
+add more opacity to the big container
+make second half of screen other color
+*/
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -68,6 +75,48 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          Center(
+            child: Image.asset(
+              "images/Person.png",
+            ),
+          ),
+          Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width - 800,
+              height: 170,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 1,
+                  ),
+                  StatContainer(
+                    label: "Logistics",
+                  ),
+                  StatContainer(
+                    label: "BCom",
+                  ),
+                  StatContainer(
+                    label: "Supply Chain",
+                  ),
+                  SizedBox(
+                    width: 1,
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -90,5 +139,42 @@ class _HomePageState extends State<HomePage> {
     AnchorElement anchorElement = AnchorElement(href: url);
     anchorElement.download = "Cobus Bothma Resume";
     anchorElement.click();
+  }
+}
+
+class StatContainer extends StatelessWidget {
+  const StatContainer({super.key, required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 250,
+      height: 100,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            10,
+          ),
+        ),
+        color: secondaryClr,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              label,
+              style: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
