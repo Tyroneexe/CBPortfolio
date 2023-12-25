@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /*
-icons at the top of the screen get a secondary color circle border
 */
 
 class HomePage extends StatefulWidget {
@@ -18,27 +17,46 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    double statBoxWidth = MediaQuery.of(context).size.width - 700;
+    //!!!!
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            color: primaryClr,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 1.5,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Image.asset("images/Person.png")],
+      backgroundColor: foregroundClr,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 1.35,
+                  decoration: const BoxDecoration(
+                    color: backgroundClr,
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [],
+                  ),
+                ),
+                Positioned(
+                  left:
+                      MediaQuery.of(context).size.width / 2 - statBoxWidth / 2,
+                  top: 650,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: lightGrey,
+                    ),
+                    width: statBoxWidth,
+                    height: 200,
+                  ),
+                ),
+              ],
             ),
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.white,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
