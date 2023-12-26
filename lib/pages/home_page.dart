@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:cobus/themes/colors.dart';
 import 'package:cobus/widgets/stat_boxes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /*
@@ -210,6 +211,28 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.transparent,
                         ),
                       ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  child: Text(
+                    "I'm",
+                    style: GoogleFonts.openSans(
+                      color: Colors.white60,
+                      fontSize: 80,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 110,
+                  top: 340,
+                  child: Text(
+                    "Cobus Bothma",
+                    style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontSize: 110,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
