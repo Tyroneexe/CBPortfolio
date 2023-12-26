@@ -1,5 +1,6 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
+import 'dart:ui';
 import 'package:cobus/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -165,6 +166,29 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ],
+                  ),
+                ),
+                Positioned(
+                  left: (MediaQuery.of(context).size.width / 2) - (600 / 2),
+                  top: 100,
+                  child: Container(
+                    width: 600,
+                    height: 600,
+                    decoration: const BoxDecoration(
+                      color: darkGrey,
+                      shape: BoxShape.circle,
+                    ),
+                    child: ClipRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 5,
+                          sigmaY: 5,
+                        ),
+                        child: Container(
+                          color: Colors.transparent,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Positioned(
