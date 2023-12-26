@@ -132,10 +132,13 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               downloadFile("images/CV.pdf");
                             },
-                            child: const Icon(
-                              Icons.sim_card_download_rounded,
-                              size: 38,
-                              color: Colors.white70,
+                            child: const Tooltip(
+                              message: "Download Resume",
+                              child: Icon(
+                                Icons.sim_card_download_rounded,
+                                size: 38,
+                                color: Colors.white70,
+                              ),
                             ),
                           ),
                           const SizedBox(
@@ -145,20 +148,26 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               _launchUrl();
                             },
-                            child: Image.asset(
-                              "images/LinkedIn.png",
-                              color: Colors.white70,
-                              width: 36,
-                              height: 36,
+                            child: Tooltip(
+                              message: "Cobus's LinkedIn",
+                              child: Image.asset(
+                                "images/LinkedIn.png",
+                                color: Colors.white70,
+                                width: 36,
+                                height: 36,
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 30,
                           ),
-                          const Icon(
-                            Icons.menu_rounded,
-                            size: 42,
-                            color: Colors.white70,
+                          const Tooltip(
+                            message: "Menu",
+                            child: Icon(
+                              Icons.menu_rounded,
+                              size: 42,
+                              color: Colors.white70,
+                            ),
                           ),
                           const SizedBox(
                             width: 50,
@@ -193,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Positioned(
                   left: (MediaQuery.of(context).size.width / 2) - (512 / 2),
-                  top: 150,
+                  top: 160,
                   child: Image.asset(
                     "images/Person.png",
                   ),
@@ -201,13 +210,98 @@ class _HomePageState extends State<HomePage> {
                 Positioned(
                   left:
                       MediaQuery.of(context).size.width / 2 - statBoxWidth / 2,
-                  top: 650,
+                  top: 660,
                   child: Container(
                     decoration: const BoxDecoration(
                       color: lightGrey,
                     ),
                     width: statBoxWidth,
-                    height: 200,
+                    height: 180,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(
+                          width: 1,
+                        ),
+                        Container(
+                          height: 90,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            color: greyClr,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                  0,
+                                  3,
+                                ),
+                              ),
+                            ],
+                          ),
+                          child: Image.asset(
+                            "images/FiverrImage.png",
+                          ),
+                        ),
+                        Container(
+                          height: 90,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            color: greyClr,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                  0,
+                                  3,
+                                ),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: 15,
+                              left: 15,
+                              right: 15,
+                            ),
+                            child: Image.asset(
+                              "images/NWUlogo.png",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 90,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            color: greyClr,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                  0,
+                                  3,
+                                ),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Image.asset(
+                              "images/LinkedInLogo.png",
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 1,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
