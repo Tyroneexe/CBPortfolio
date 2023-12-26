@@ -2,6 +2,7 @@
 import 'dart:html' as html;
 import 'dart:ui';
 import 'package:cobus/themes/colors.dart';
+import 'package:cobus/widgets/stat_boxes.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -47,33 +48,36 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              refreshScreen();
-                            },
-                            child: const Row(
-                              children: [
-                                SizedBox(
-                                  width: 50,
-                                ),
-                                Icon(
-                                  Icons.person,
-                                  size: 44,
-                                  color: primaryClr,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Cobus",
-                                  style: TextStyle(
-                                    fontFamily: "Roboto",
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize: 35,
+                          MouseRegion(
+                            cursor: MaterialStateMouseCursor.clickable,
+                            child: GestureDetector(
+                              onTap: () {
+                                refreshScreen();
+                              },
+                              child: const Row(
+                                children: [
+                                  SizedBox(
+                                    width: 50,
                                   ),
-                                ),
-                              ],
+                                  Icon(
+                                    Icons.person,
+                                    size: 44,
+                                    color: primaryClr,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "Cobus",
+                                    style: TextStyle(
+                                      fontFamily: "Roboto",
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 35,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           const SizedBox(
@@ -134,10 +138,13 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: const Tooltip(
                               message: "Download Resume",
-                              child: Icon(
-                                Icons.sim_card_download_rounded,
-                                size: 38,
-                                color: Colors.white70,
+                              child: MouseRegion(
+                                cursor: MaterialStateMouseCursor.clickable,
+                                child: Icon(
+                                  Icons.sim_card_download_rounded,
+                                  size: 38,
+                                  color: Colors.white70,
+                                ),
                               ),
                             ),
                           ),
@@ -150,11 +157,14 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Tooltip(
                               message: "Cobus's LinkedIn",
-                              child: Image.asset(
-                                "images/LinkedIn.png",
-                                color: Colors.white70,
-                                width: 36,
-                                height: 36,
+                              child: MouseRegion(
+                                cursor: MaterialStateMouseCursor.clickable,
+                                child: Image.asset(
+                                  "images/LinkedIn.png",
+                                  color: Colors.white70,
+                                  width: 36,
+                                  height: 36,
+                                ),
                               ),
                             ),
                           ),
@@ -163,10 +173,13 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const Tooltip(
                             message: "Menu",
-                            child: Icon(
-                              Icons.menu_rounded,
-                              size: 42,
-                              color: Colors.white70,
+                            child: MouseRegion(
+                              cursor: MaterialStateMouseCursor.clickable,
+                              child: Icon(
+                                Icons.menu_rounded,
+                                size: 42,
+                                color: Colors.white70,
+                              ),
                             ),
                           ),
                           const SizedBox(
@@ -217,91 +230,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     width: statBoxWidth,
                     height: 180,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const SizedBox(
-                          width: 1,
-                        ),
-                        Container(
-                          height: 90,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            color: greyClr,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(
-                                  0,
-                                  3,
-                                ),
-                              ),
-                            ],
-                          ),
-                          child: Image.asset(
-                            "images/FiverrImage.png",
-                          ),
-                        ),
-                        Container(
-                          height: 90,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            color: greyClr,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(
-                                  0,
-                                  3,
-                                ),
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: 15,
-                              left: 15,
-                              right: 15,
-                            ),
-                            child: Image.asset(
-                              "images/NWUlogo.png",
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 90,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            color: greyClr,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(
-                                  0,
-                                  3,
-                                ),
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Image.asset(
-                              "images/LinkedInLogo.png",
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 1,
-                        ),
-                      ],
-                    ),
+                    child: const StatBox(),
                   ),
                 ),
               ],
